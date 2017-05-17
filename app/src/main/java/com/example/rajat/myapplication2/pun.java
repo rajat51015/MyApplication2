@@ -14,61 +14,74 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ToggleButton;
 
+import java.util.ArrayList;
 
 
-public class pun extends AppCompatActivity  {
-Bundle e;DBHelper f;ImageView v,n;Button tb;Bitmap bp;String t2,t3;long t;
+public  class pun extends AppCompatActivity {
+    Bundle e;
+    DBHelper f;
+    ImageView v, n;long k;
+    Button tb;
+    Bitmap bp;
+    String t2, t3;
+    public static long t;public ArrayAdapter m;
+    public static int qq;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pun);
 
-        Intent in=getIntent();
-v=(ImageView) findViewById(R.id.im);
+        Intent in = getIntent();
+        v = (ImageView) findViewById(R.id.im);
 
-        tb=(Button) findViewById(R.id.button);
-        e=in.getExtras();
-         t=e.getLong("key");
-        f=new DBHelper(this);
-        Cursor d=f.getData(String.valueOf(t+1));
+        tb = (Button) findViewById(R.id.button);
+        e = in.getExtras();
+        t = e.getLong("key");
+        f = new DBHelper(this);
+        Cursor d = f.getData(String.valueOf(t + 1));
         while (d.moveToNext()) {
-            t2=d.getString(0);
-            t3=d.getString(2);
-        byte l[]=d.getBlob(3);
+            t2 = d.getString(1);
+            t3 = d.getString(2);
+            byte l[] = d.getBlob(3);
 
-       bp = BitmapFactory.decodeByteArray(l, 0, l.length);
-        v.setImageBitmap(bp);}
+            bp = BitmapFactory.decodeByteArray(l, 0, l.length);
+            v.setImageBitmap(bp);
+        }
         tb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-int k=1;
+                 k=t+1;
 
-                Bitmap bp=BitmapFactory.decodeResource(getResources(),R.drawable.cross);
+                Bitmap bp = BitmapFactory.decodeResource(getResources(), R.drawable.cross);
                 ImageView iv = (ImageView) findViewById(R.id.im1);
                 iv.setImageBitmap(bp);
 
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent mainIntent = new Intent(pun.this,KILL.class);
-                        Log.d("transfer",   String.valueOf(t+1));
-                        mainIntent.putExtra("l",String.valueOf(t+1));
-                        startActivity(mainIntent);
-                        finish();
-                    }
-                }, 3000);
+
+                ArrayList<wordsclass> tk=KILL.words1;
+                KILL ob=new KILL();
+                pun ob1=new pun();
+                wordsclass bb=new wordsclass(t2,t3,bp);
+                tk.remove(bb);
+                WordAdapter itemsAdapter2 = new WordAdapter(ob.getActivity(), tk);
+
+                KILL.listView1.setAdapter(itemsAdapter2);
+
+
+
 
 
 /* wordsclass p=new wordsclass(t2,t3,bp);
             /* Intent i=new Intent(pun.this,KILL.class);
                 i.putExtra("hi",t2);
 startActivity(i);*/
-              //  i.putExtra("hii",t3);
+                //  i.putExtra("hii",t3);
                 //i.putExtra("hiii",bp);
 
             }

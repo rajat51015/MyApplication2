@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.example.rajat.myapplication2.DBHelper.dbname;
+import static com.example.rajat.myapplication2.pun.qq;
 
 /**
  * Fragment that displays "Tuesday".
@@ -34,8 +35,8 @@ public class KILL extends Fragment {
     DBHelper f; public long o1=0;
     Cursor d;int k=1;static Intent ii=new Intent();
     Context l;Bundle e=null;
-    ListView listView1;
-      ArrayList<wordsclass> words1 = new ArrayList<wordsclass>();
+   public static ListView listView1;
+    public static   ArrayList<wordsclass> words1 = new ArrayList<wordsclass>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -43,31 +44,14 @@ public class KILL extends Fragment {
         f = new DBHelper(getActivity());
         int profile_counts = f.getProfilesCount();
 
-ii=getActivity().getIntent();
-         e=ii.getExtras();String oo=e.getString("l");
-       if(oo==null){Log.d("no","no");}
-    else if(oo!=null){
-    String oo1=e.getString("l");
-        o1=Long.parseLong(oo1);
-        Log.d("yes","2");
-        if (String.valueOf(o1)!=null) {
-            Log.d("lkjjjj","3");
-
-            String s1 = String.valueOf(o1);
-            words1.remove(o1);}
-
-
 
 
             //  SQLiteDatabase db = f.getWritableDatabase();
 
             //f.delete(m);}
 
-        }
 
-  if(o1==0)
-  {
-      Log.d("lkjjjj","1");d = f.getData(String.valueOf(k));
+        Cursor d = f.getData(String.valueOf(k));
 
     while (d.moveToNext()) {
         a = d.getString(1);
@@ -78,15 +62,15 @@ ii=getActivity().getIntent();
         words1.add(new wordsclass(a, b, bp));
         k++;
         d = f.getData(String.valueOf(k));o1++;
-    }}
+    }
 
 
 
         WordAdapter itemsAdapter1 = new WordAdapter(getActivity(), words1);
 
+
             listView1 = (ListView) v1.findViewById(R.id.list1);
-        if(o1>0)
-        { itemsAdapter1.notifyDataSetChanged();}
+
 
             listView1.setAdapter(itemsAdapter1);
 
