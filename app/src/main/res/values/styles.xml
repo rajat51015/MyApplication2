@@ -1,15 +1,17 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="actionBarTheme">@color/White</item>
-        <item name="actionBarTabTextStyle">@color/White</item>
+        <item name="actionBarTabTextStyle">@color/Black</item>
+        <item name="android:textColor">@color/Black</item>
     </style>
 
-    <style name="CustomActionbar" parent="@android:style/Widget.Holo.Light.ActionBar.TabBar">
+    <style name="CustomActionbar" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="android:textColor">@color/White</item>
 
+   </style>
 
-    </style>
 
 </resources>
