@@ -22,6 +22,8 @@ import android.widget.ToggleButton;
 import java.util.ArrayList;
 
 
+
+
 public  class pun extends AppCompatActivity {
     Bundle e;
     DBHelper f;
@@ -57,21 +59,23 @@ public  class pun extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                 k=t+1;
+                k=t+1;
 
                 Bitmap bp = BitmapFactory.decodeResource(getResources(), R.drawable.cross);
                 ImageView iv = (ImageView) findViewById(R.id.im1);
                 iv.setImageBitmap(bp);
 
+                f.delete(String.valueOf(k));
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i=new Intent(pun.this,KILL.class);
+                        startActivity(i);
+                        finish();
+                    }
+                }, 3000);
 
-                ArrayList<wordsclass> tk=KILL.words1;
-                KILL ob=new KILL();
-                pun ob1=new pun();
-                wordsclass bb=new wordsclass(t2,t3,bp);
-                tk.remove(bb);
-                WordAdapter itemsAdapter2 = new WordAdapter(ob.getActivity(), tk);
 
-                KILL.listView1.setAdapter(itemsAdapter2);
 
 
 

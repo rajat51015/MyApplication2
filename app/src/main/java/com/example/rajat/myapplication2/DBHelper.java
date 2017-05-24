@@ -1,4 +1,4 @@
-package com.example.rajat.myapplication2;
+  package com.example.rajat.myapplication2;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -58,7 +58,10 @@ public class DBHelper extends SQLiteOpenHelper {
    public void delete(String name1) {
         SQLiteDatabase db = getWritableDatabase();
 
-       db.execSQL("delete from  " + dbname +" where specific_row_to_delete=\'" + name1 );
+       db.execSQL("DELETE FROM " + dbname + " WHERE " + id + "= '" + name1 + "'");
+
+       db.execSQL("UPDATE "+dbname+" set id = (id - 1) WHERE id > "+name1);
+       db.close();
     }
 
 
