@@ -9,7 +9,7 @@ import android.support.v4.app.FragmentPagerAdapter;
  */
 public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
 
-    private String tabTitles[] = new String[] { "Tab1", "Tab2", "Tab3" };
+    private String tabTitles[] = new String[] { "HITLIST", "KILLED", "ADD" };
     public SimpleFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -19,7 +19,7 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
         if (position == 0) {
             return new HITLIST();
         } else if (position == 1){
-            return new KILL();
+            return new KILLED();
         } else {
             return new Add();
         }
