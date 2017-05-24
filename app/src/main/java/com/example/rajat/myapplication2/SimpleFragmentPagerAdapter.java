@@ -21,7 +21,7 @@ public class SimpleFragmentPagerAdapter extends FragmentPagerAdapter {
         } else if (position == 1){
             return new KILL();
         } else {
-            return new WednesdayFragment();
+            return new Add();
         }
     }
     @Override
