@@ -35,8 +35,8 @@ public class KILL extends Fragment {
     DBHelper f; public long o1=0;
     Cursor d;int k=1;static Intent ii=new Intent();
     Context l;Bundle e=null;
-   public static ListView listView1;
-    public static   ArrayList<wordsclass> words1 = new ArrayList<wordsclass>();
+    ListView listView1;
+       ArrayList<wordsclass> words1 = new ArrayList<wordsclass>();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
